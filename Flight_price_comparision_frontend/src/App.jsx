@@ -8,6 +8,9 @@ import {
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
+import FlightResults from "./pages/FlightResults";
+import Booking from "./pages/Booking";
+import BookingConfirmation from "./pages/BookingConfirmation";
 
 import "./App.css";
 
@@ -40,12 +43,24 @@ function App() {
                     path="/dashboard"
                     element={<Dashboard />}
                 />
-
+                <Route
+                    path="/flight-results"
+                    element={<FlightResults />}
+                />
+                <Route
+                    path="/booking"
+                    element={<Booking />}
+                />
+                <Route
+                    path="/booking-confirmation"
+                    element={<BookingConfirmation />}
+                />
                 {/* Unknown URL */}
                 <Route
                     path="*"
                     element={<Navigate to="/signin" replace />}
                 />
+
 
             </Routes>
 

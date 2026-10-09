@@ -724,3 +724,199 @@ footer {
         padding: 55px 20px;
     }
 }
+/* Flight Results Page */
+
+.flight-results {
+    min-height: 100vh;
+    padding: 40px 20px;
+    background: #f3f6fb;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.flight-results > h1,
+.flight-results > h3,
+.flight-results > p {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flight-results > h1 {
+    text-align: center;
+    color: #123b70;
+    font-size: 38px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.flight-results > h3 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+}
+
+.flight-results > p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.flight-results > button {
+    display: block;
+    margin: 0 auto 25px;
+    padding: 12px 22px;
+    background: #123b70;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.flight-card {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 25px 30px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
+
+.flight-card h2 {
+    color: #123b70;
+    font-size: 25px;
+}
+
+.flight-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.flight-details h3 {
+    font-size: 22px;
+    margin-bottom: 5px;
+    color: #222;
+}
+
+.flight-details p {
+    color: #666;
+    font-size: 15px;
+}
+
+.flight-details span {
+    color: #2475d0;
+    font-size: 18px;
+}
+
+.flight-details button {
+    padding: 12px 22px;
+    background: #1769d2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.flight-details button:hover {
+    background: #0d4fa8;
+}
+
+@media (max-width: 600px) {
+    .flight-results {
+        padding: 20px 12px;
+    }
+
+    .flight-results > h1 {
+        font-size: 28px;
+    }
+
+    .flight-card {
+        padding: 20px;
+    }
+
+    .flight-details {
+        gap: 12px;
+    }
+}
+.booking-page {
+    min-height: 100vh;
+    padding: 40px 20px;
+    background: #f3f6fb;
+    font-family: Arial, sans-serif;
+}
+
+.booking-container {
+    max-width: 650px;
+    margin: auto;
+    padding: 35px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.booking-container h1 {
+    text-align: center;
+    color: #123b70;
+    margin: 25px 0;
+}
+
+.booking-flight {
+    padding: 20px;
+    margin-bottom: 30px;
+    background: #eef5ff;
+    border-radius: 12px;
+}
+
+.booking-flight h2 {
+    color: #123b70;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.booking-form label {
+    font-weight: bold;
+    color: #333;
+}
+
+.booking-form input {
+    padding: 13px;
+    border: 1px solid #ccd5e0;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.booking-submit,
+.back-button {
+    padding: 13px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #1769d2;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.booking-submit {
+    margin-top: 15px;
+}
+
+.booking-submit:hover,
+.back-button:hover {
+    background: #0d4fa8;
+}
+
+@media (max-width: 600px) {
+    .booking-container {
+        padding: 20px;
+    }
+}

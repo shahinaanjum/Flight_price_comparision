@@ -13,20 +13,29 @@ function Dashboard() {
     const [cabinClass, setCabinClass] = useState("Economy");
 
     const handleSearch = (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        console.log({
+    if (!from.trim() || !to.trim() || !departureDate) {
+        alert("Please enter From, To and Departure Date");
+        return;
+    }
+
+    if (from.trim().toLowerCase() === to.trim().toLowerCase()) {
+        alert("From and To locations must be different");
+        return;
+    }
+
+    navigate("/flight-results", {
+        state: {
             from,
             to,
             departureDate,
             returnDate,
             passengers,
             cabinClass
-        });
-
-        alert("Flight search started!");
-    };
-
+        }
+    });
+};
     const handleLogout = () => {
 
         localStorage.removeItem("token");
