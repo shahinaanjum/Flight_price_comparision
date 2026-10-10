@@ -24,6 +24,10 @@ function Dashboard() {
         alert("From and To locations must be different");
         return;
     }
+    if (returnDate && returnDate < departureDate) {
+    alert("Return date must be after departure date");
+    return;
+}
 
     navigate("/flight-results", {
         state: {
@@ -61,8 +65,8 @@ function Dashboard() {
                         Home
                     </button>
 
-                    <button>
-                        My Bookings
+                    <button onClick={() => navigate("/my-bookings")}>
+                    My Bookings
                     </button>
 
                     <button>
@@ -141,38 +145,34 @@ function Dashboard() {
 
                             </div>
 
+                              {/* Departure */}
+                              <div className="input-group">
+                              <label>Departure</label>
 
-                            {/* Departure */}
-                            <div className="input-group">
+                               <input
+                               type="date"
+                               value={departureDate} 
+                               min={new Date().toISOString().split("T")[0]}
+                               onChange={(e) =>
+                               setDepartureDate(e.target.value)
+                            }
+                            required
+                           />
+                           </div>
+                           ```jsx
+                          {/* Return */}
+                          <div className="input-group">
+                          <label>Return</label>
 
-                                <label>Departure</label>
-
-                                <input
-                                    type="date"
-                                    value={departureDate}
-                                    onChange={(e) =>
-                                        setDepartureDate(e.target.value)
-                                    }
-                                    required
-                                />
-
-                            </div>
-
-
-                            {/* Return */}
-                            <div className="input-group">
-
-                                <label>Return</label>
-
-                                <input
-                                    type="date"
-                                    value={returnDate}
-                                    onChange={(e) =>
-                                        setReturnDate(e.target.value)
-                                    }
-                                />
-
-                            </div>
+                          <input
+                          type="date"
+                          value={returnDate}
+                          min={departureDate || new Date().toISOString().split("T")[0]}
+                          onChange={(e) =>
+                          setReturnDate(e.target.value)
+                        }
+                        />
+                        </div>
 
                         </div>
 
