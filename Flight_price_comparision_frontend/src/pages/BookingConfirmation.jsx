@@ -1,4 +1,6 @@
+
 import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "../App.css";
 
 function BookingConfirmation() {
@@ -6,14 +8,41 @@ function BookingConfirmation() {
     const navigate = useNavigate();
 
     const booking = location.state || {};
+    const flight = booking.flight || {};
+    const passenger = booking.passenger || {};
 
-    const bookingReference =
-        "FL" + Math.random().toString(36).substring(2, 8).toUpperCase();
+    const [savedBooking] = useState(() => {
+        const newBooking = {
+            bookingReference:
+                "FL" + Math.random().toString(36).substring(2, 8).toUpperCase(),
+            airline: flight.airline || "Not available",
+            from: flight.from || "",
+            to: flight.to || "",
+            departureDate: flight.departureDate || "",
+            departure: flight.departure || "",
+            passengerName: passenger.fullName || "",
+            price: flight.price ?? 0,
+        };
+
+        if (location.state) {
+            const existingBookings = JSON.parse(
+                localStorage.getItem("bookings") || "[]"
+            );
+
+            existingBookings.push(newBooking);
+
+            localStorage.setItem(
+                "bookings",
+                JSON.stringify(existingBookings)
+            );
+        }
+
+        return newBooking;
+    });
 
     return (
         <div className="confirmation-page">
             <div className="confirmation-card">
-
                 <div className="success-icon">✓</div>
 
                 <h1>Booking Confirmed!</h1>
@@ -24,7 +53,7 @@ function BookingConfirmation() {
 
                 <div className="booking-reference">
                     <p>Booking Reference</p>
-                    <h2>{bookingReference}</h2>
+                    <h2>{savedBooking.bookingReference}</h2>
                 </div>
 
                 <div className="confirmation-details">
@@ -32,28 +61,30 @@ function BookingConfirmation() {
 
                     <p>
                         <strong>Airline:</strong>{" "}
-                        {booking.airline || "Not available"}
+                        {savedBooking.airline}
                     </p>
 
                     <p>
                         <strong>Route:</strong>{" "}
-                        {booking.from || "Not available"} →{" "}
-                        {booking.to || "Not available"}
+                        {savedBooking.from || "Not available"} →{" "}
+                        {savedBooking.to || "Not available"}
                     </p>
 
                     <p>
                         <strong>Departure:</strong>{" "}
-                        {booking.departureDate || "Not available"}
+                        {savedBooking.departureDate ||
+                            savedBooking.departure ||
+                            "Not available"}
                     </p>
 
                     <p>
                         <strong>Passenger:</strong>{" "}
-                        {booking.passengerName || "Not available"}
+                        {savedBooking.passengerName || "Not available"}
                     </p>
 
                     <p>
                         <strong>Total Price:</strong>{" "}
-                        ₹{booking.price || 0}
+                        ₹{savedBooking.price}
                     </p>
                 </div>
 
@@ -63,7 +94,6 @@ function BookingConfirmation() {
                 >
                     Back to Dashboard
                 </button>
-
             </div>
         </div>
     );
