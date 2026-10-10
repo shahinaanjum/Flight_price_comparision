@@ -11,6 +11,7 @@ import Dashboard from "./pages/Dashboard";
 import FlightResults from "./pages/FlightResults";
 import Booking from "./pages/Booking";
 import BookingConfirmation from "./pages/BookingConfirmation";
+import MyBookings from "./pages/MyBookings";
 
 import "./App.css";
 
@@ -55,7 +56,14 @@ function App() {
                     path="/booking-confirmation"
                     element={<BookingConfirmation />}
                 />
+        
                 {/* Unknown URL */}
+                
+                <Route
+                path="/my-bookings"
+                element={<MyBookings />}
+               />
+
                 <Route
                     path="*"
                     element={<Navigate to="/signin" replace />}
